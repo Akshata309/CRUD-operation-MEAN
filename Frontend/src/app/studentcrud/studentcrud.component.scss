@@ -1,0 +1,69 @@
+/* styles.scss or your component-specific styles file */
+
+.container {
+    margin-top: 20px;
+  }
+  
+  .card {
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  
+    label {
+      font-weight: bold;
+    }
+  
+    input {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-top: 5px;
+    }
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+  }
+  
+  .btn-success,
+  .btn-danger {
+    margin-right: 5px;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  
+    th,
+    td {
+      padding: 12px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+  
+    th {
+      background-color: #f2f2f2;
+    }
+  
+    tr {
+      &:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+    }
+  
+    .btn-success {
+      background-color: #28a745;
+    }
+  
+    .btn-danger {
+      background-color: #dc3545;
+    }
+  }
+  
