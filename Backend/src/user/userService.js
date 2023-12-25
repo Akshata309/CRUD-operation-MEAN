@@ -1,78 +1,24 @@
-var userModel = require('./userModel');
+const userModel = require('./userModel');
 
 module.exports.getDataFromDBService = () => {
+    return userModel.find({}).exec();
+}
 
-    return new Promise(function checkURL(resolve, reject) {
- 
-        userModel.find({}, function returnData(error, result) {
- 
-            if (error) {
-                reject(false);
-            } else {
-         
-                resolve(result);
-            }
-        });
- 
+module.exports.createUserDBService = (userDetails) => {
+    const userModelData = new userModel({
+        name: userDetails.name,
+        address: userDetails.address,
+        phone: userDetails.phone
     });
- 
- }
 
- module.exports.createUserDBService = (userDetails) => {
+    return userModelData.save();
+}
 
+module.exports.updateUserDBService = (id, userDetails) => {
+    // Assuming userDetails is an object containing fields to update
+    return userModel.findByIdAndUpdate(id, userDetails, { new: true }).exec();
+}
 
-    return new Promise(function myFn(resolve, reject) {
- 
-        var userModelData = new userModel();
- 
-        userModelData.name = userDetails.name;
-        userModelData.address = userDetails.address;
-        userModelData.phone = userDetails.phone;
-
-        userModelData.save(function resultHandle(error, result) {
- 
-            if (error) {
-                reject(false);
-            } else {
-                resolve(true);
-            }
-        });
- 
-    });
- 
- }
-
-
- module.exports.updateUserDBService = (id,userDetails) => {     
-    console.log(userDetails);
-    return new Promise(function myFn(resolve, reject) {
-        userModel.findByIdAndUpdate(id,userDetails, function returnData(error, result) {
-          if(error)
-          {
-                reject(false);
-          }
-          else
-          {
-             resolve(result);
-          }
-        });
- 
-    });
- }
-
- module.exports.removeUserDBService = (id) => { 
-    return new Promise(function myFn(resolve, reject) {
-        userModel.findByIdAndDelete(id, function returnData(error, result) {
- 
-          if(error)
-          {
-                reject(false);
-          }
-          else
-          {
-             resolve(result);
-          }          
-        });
-    });
- 
- }
+module.exports.removeUserDBService = (id) => {
+    return userModel.findByIdAndDelete(id).exec();
+}
